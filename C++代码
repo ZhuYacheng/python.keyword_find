@@ -19,7 +19,7 @@ int main(){
         case 1:
             break;
         default:
-            break;
+            break;‘int’
     }
     if(i<0){
         if(i<-1){}
@@ -35,5 +35,6 @@ int main(){
         if(j!=0){}
         else{}
     }
+    printf("int float 'int if else'")
     return 0;
 }

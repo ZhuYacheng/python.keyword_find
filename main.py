@@ -44,6 +44,14 @@ def manage_txt(all_lines):
                 line = line[:first_subscript] + line[first_subscript + last_subscript + 2:]
             else:
                 break
+        # 删除单引号内内容
+        while True:
+            if "'" in line:
+                first_subscript = line.index("'")
+                last_subscript = line[first_subscript + 1:].index("'")
+                line = line[:first_subscript] + line[first_subscript + last_subscript + 2:]
+            else:
+                break
         # 将特殊字符转化为空格，分词
         for ch in chars:
             line = line.replace(ch, ' ')
