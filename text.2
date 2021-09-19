@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	char c;
+	int alp, num, oth;
+	alp = num = oth = 0;
+	int max1, max2, max3;
+	while (scanf("%c", &c) != EOF)
+	{
+		if (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z')
+		{
+			alp++;
+		}
+		else if (c >= '0' && c <= '9')
+		{
+			num++;
+		}
+		else if (c != '\n')
+		{
+			oth++;
+		}
+	}
+	printf("alp=%d num=%d oth=%d\n", alp, num, oth);
+
+
+}

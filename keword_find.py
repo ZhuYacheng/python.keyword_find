@@ -2,14 +2,6 @@
 作者：ZYC
 时间：2021年09月19日
 """
-"""
-作者：ZYC
-时间：2021年09月19日
-"""
-"""
-作者：ZYC
-时间：2021年09月18日
-"""
 import time
 
 key_word = ['auto', 'break', 'case', 'char', 'const', 'continue', 'default', 'do',
@@ -117,9 +109,12 @@ def if_else_elif_num(all_words):
                     count = 1
                 elif temp == 'if':
                     break
-
         if count == 1:
             if_elif_num += 1
+    for word in new_list:  # 删除出现if-elseif-elseif的情况
+        if word == 'if':
+            if_num -= 1
+
     return if_num, if_elif_num
 
 
@@ -133,11 +128,13 @@ if rank >= 2:
     print("case num:", end = ' ')
     for case in case_nums:
         print(case, end = ' ')
+    if len(case_nums) == 0:
+        print('0', end = ' ')
 
 if rank >= 3:
     print('\n'f"if-else num:{if_nums - if_elif_nums}")
 if rank >= 4:
-    print(f"if-else num:{if_nums - if_elif_nums}")
+    print(f"if-elseif-else num:{if_elif_nums}")
 
 end = time.perf_counter()
 print(f"运行耗时:{end - start}")
