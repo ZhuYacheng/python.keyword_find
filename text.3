@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int main(){
+	int a,min=100000,max=-10,f1,f2,ans;
+	long long int que[100000];
+	cin>>a;
+	for(int i=0;i<a;i++){
+		cin>>que[i];
+		if(que[i]<min) {
+			min=que[i];
+			f1=i;
+
+		}
+		//if(que[i]<=max){max+=que[i]}
+		//else {max-=que[i];}
+		if(que[i]>max){
+			max=que[i];
+			f2=i;
+		}
+	}
+	if(f1>f2) ans=f1+f2+2;
+	else{
+		/*for(int i=0;i<a;i++){
+			for(int j=i;j<a;j++){	
+				if(a[j]<a[j-1]) {
+				//	max=a[i]+
+				}
+				else{}
+			}
+		}*/
+	}
+	cout<<ans;
+} 

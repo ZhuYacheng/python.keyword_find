@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+
+int n;
+int val[22][22];
+
+//chance 0向右  1向左下 2向上
+void triangle(int sum, int step, int x, int y, int chance){
+	val[x][y] = step;
+	if(step == sum){
+		return;
+	}
+	if(chance == 0){//向右
+		if(step < n){//第一行特判
+			triangle(sum, step + 1, x, y + 1, chance);
+		} else if (step == n){//第一行特判
+			triangle(sum, step + 1, x + 1, y - 1, 1);
+		} else if (val[x][y + 1] == 0){//判断是否已有数字存在
+			triangle(sum, step + 1, x, y + 1, chance);
+		} else {
+			triangle(sum, step + 1, x + 1, y - 1, 1);
+		}
+	} else if(chance == 1) {//向左下
+		if(y - 1 <= 0 || val[x + 1][y - 1]){//判断是否越界 || 是否已有数字存在
+			triangle(sum, step + 1, x - 1, y, 2);
+		}else{
+			triangle(sum, step + 1, x + 1, y - 1, 1);
+		}
+	} else if(chance == 2) {//向上
+		if(val[x - 1][y]){//判断是否已有数字存在
+			triangle(sum, step + 1, x, y + 1, 0);
+		} else {
+			triangle(sum, step + 1, x - 1, y, 2);
+		}
+	}
+}
+int main(){
+	memset(val, 0, sizeof(val));//初始化
+	cin >> n;
+	triangle(((1 + n) * n) / 2, 1, 1, 1, 0);
+	for(int i = 1; i <= n; ++i){
+		for(int j = 1; j <= n - i + 1; ++j){
+			printf("%4d", val[i][j]);//格式化输出
+			if(j != n - i + 1){
+				cout << ' ';
+			}
+		}
+		cout << endl;
+	}
+	return 0;
+
+}
