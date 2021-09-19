@@ -108,21 +108,21 @@ def if_else_elif_num(all_words):
 
 
 words, total_num = manage_txt(lines)
-case_num, switch_num = switch_case_num(words)
-if_num, if_elif_num = if_else_elif_num(words)
+case_nums, switch_nums = switch_case_num(words)
+if_nums, if_elif_nums = if_else_elif_num(words)
 
 if rank >= 1:
     print(f"total num:{total_num}")
 if rank >= 2:
-    print(f"switch num:{switch_num}")
+    print(f"switch num:{switch_nums}")
     print("case num:", end = ' ')
-    for case in case_num:
+    for case in case_nums:
         print(case, end = ' ')
 
 if rank >= 3:
-    print('\n'f"if-else num:{if_num - if_elif_num}")
+    print('\n'f"if-else num:{if_nums - if_elif_nums}")
 if rank >= 4:
-    print(f"if-else num:{if_num - if_elif_num}")
+    print(f"if-else num:{if_nums - if_elif_nums}")
 
 end = time.perf_counter()
 print(f"运行耗时:{end - start}")
