@@ -120,9 +120,8 @@ def if_else_elif_num(all_words):
 
 
 words, total_num = manage_txt(lines)
-case_nums, switch_nums = switch_case_num(words)
-if_nums, if_elif_nums = if_else_elif_num(words)
-
+case_nums, switch_nums = switch_case_num(words[:])
+if_nums, if_elif_nums = if_else_elif_num(words[:])
 if rank >= 1:
     print(f"total num:{total_num}")
 if rank >= 2:
