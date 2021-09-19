@@ -17,6 +17,7 @@ rank = int(rank)
 with open(file_name, encoding = 'utf-8') as C_object:
     lines = C_object.readlines()
 
+
 # 处理文本，返回关键字个数
 def manage_txt(all_lines):
     chars = ['(', ')', '{', '}', ':', ',', '<', '>', '=', '+', '-', '#', ';']
@@ -68,6 +69,7 @@ def manage_txt(all_lines):
                     all_words.append(word)
     return all_words, count
 
+
 # 统计switch-case 个数
 def switch_case_num(all_words):
     """统计switch-case个数"""
@@ -87,6 +89,7 @@ def switch_case_num(all_words):
         else:
             break
     return case_num, switch_num
+
 
 # 统计if-else语句和if-elseif-else语句个数
 def if_else_elif_num(all_words):

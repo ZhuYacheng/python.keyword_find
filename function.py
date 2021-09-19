@@ -1,21 +1,11 @@
 """
 作者：ZYC
-时间：2021年09月18日
+时间：2021年09月20日
 """
-import time
-
 key_word = ['auto', 'break', 'case', 'char', 'const', 'continue', 'default', 'do',
             'double', 'else', 'enum', 'extern', 'float', 'for', 'goto', 'if',
             'int', 'long', 'register', 'return', 'short', 'signed', 'sizeof', 'static',
             'struct', 'switch', 'typedef', 'union', 'unsigned', 'void', 'volatile', 'while']
-
-file_name = input("Please input file name:")
-rank = input("Please input class:")
-start = time.perf_counter()
-
-rank = int(rank)
-with open(file_name, encoding = 'utf-8') as C_object:
-    lines = C_object.readlines()
 
 
 def manage_txt(all_lines):
@@ -29,12 +19,12 @@ def manage_txt(all_lines):
             line = line[:temp]
         # 删除多行注释
         if '/*' in line:
-            first_line = lines.index(line)
-            for new_line in lines[first_line:]:
+            first_line = all_lines.index(line)
+            for new_line in all_lines[first_line:]:
                 if '*/' not in new_line:
-                    del lines[first_line]
+                    del all_lines[first_line]
                 else:
-                    del lines[first_line]
+                    del all_lines[first_line]
                     break
         # 删除双引号内内容
         while True:
@@ -109,28 +99,10 @@ def if_else_elif_num(all_words):
                     count = 1
                 elif temp == 'if':
                     break
-
         if count == 1:
             if_elif_num += 1
+    for word in new_list:  # 删除出现if-elseif-elseif的情况
+        if word == 'if':
+            if_num -= 1
+
     return if_num, if_elif_num
-
-
-words, total_num = manage_txt(lines)
-case_nums, switch_nums = switch_case_num(words)
-if_nums, if_elif_nums = if_else_elif_num(words)
-
-if rank >= 1:
-    print(f"total num:{total_num}")
-if rank >= 2:
-    print(f"switch num:{switch_nums}")
-    print("case num:", end = ' ')
-    for case in case_nums:
-        print(case, end = ' ')
-
-if rank >= 3:
-    print('\n'f"if-else num:{if_nums - if_elif_nums}")
-if rank >= 4:
-    print(f"if-else num:{if_nums - if_elif_nums}")
-
-end = time.perf_counter()
-print(f"运行耗时:{end - start}")
