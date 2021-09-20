@@ -8,15 +8,12 @@ key_word = ['auto', 'break', 'case', 'char', 'const', 'continue', 'default', 'do
             'double', 'else', 'enum', 'extern', 'float', 'for', 'goto', 'if',
             'int', 'long', 'register', 'return', 'short', 'signed', 'sizeof', 'static',
             'struct', 'switch', 'typedef', 'union', 'unsigned', 'void', 'volatile', 'while']
-
 file_name = input("Please input file name:")
 rank = input("Please input class:")
 start = time.perf_counter()
-
 rank = int(rank)
 with open(file_name, encoding = 'utf-8') as C_object:
     lines = C_object.readlines()
-
 
 # 处理文本，返回关键字个数
 def manage_txt(all_lines):
@@ -69,13 +66,11 @@ def manage_txt(all_lines):
                     all_words.append(word)
     return all_words, count
 
-
 # 统计switch-case 个数
 def switch_case_num(all_words):
     """统计switch-case个数"""
     case_num = []
     switch_num = 0
-
     while True:
         num = 0
         if 'default' in all_words:
@@ -89,7 +84,6 @@ def switch_case_num(all_words):
         else:
             break
     return case_num, switch_num
-
 
 # 统计if-else语句和if-elseif-else语句个数
 def if_else_elif_num(all_words):
@@ -117,7 +111,6 @@ def if_else_elif_num(all_words):
     for word in new_list:  # 删除出现if-elseif-elseif的情况
         if word == 'if':
             if_num -= 1
-
     return if_num, if_elif_num
 
 
